@@ -1,0 +1,22 @@
+{
+  "name": "wadaya-moving-kit",
+  "displayName": "Wadaya Storage Prep",
+  "version": "0.1.0",
+  "description": "Prepare furniture and belongings for long-term storage, including while you live abroad. Claude helps you make a checklist and numbered box inventory, and calculates packed volume locally from your measurements. Works in English and Arabic.",
+  "author": {
+    "name": "Wadaya Self Storage",
+    "email": "hello@wadayaselfstorage.com",
+    "url": "https://www.wadayaselfstorage.com/"
+  },
+  "homepage": "https://www.wadayaselfstorage.com/",
+  "license": "MIT",
+  "keywords": [
+    "self storage",
+    "long-term storage",
+    "living abroad",
+    "box inventory",
+    "storage checklist",
+    "bahrain",
+    "arabic"
+  ]
+}

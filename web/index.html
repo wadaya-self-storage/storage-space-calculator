@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Measure your boxes and furniture before renting storage in Bahrain. A free volume calculator in English and Arabic from Wadaya Self Storage in Tubli.">
+  <title>Storage Unit Size Calculator | Wadaya Self Storage</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="inventory.js"></script>
+  <script defer src="translations.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <a data-i18n="skip" class="skip-link" href="#main">Skip to calculator</a>
+  <header class="page-header">
+    <a class="brand" href="https://www.wadayaselfstorage.com/" target="_blank" rel="noopener"><span class="brand-name" data-i18n="brand">Wadaya</span><span data-i18n="brandDetail">Self Storage</span></a>
+    <div class="header-controls"><span class="header-note" data-i18n="headerNote">A free storage planning tool</span><div class="language-field"><label for="language" data-i18n="language">Language</label><select id="language" name="language"><option value="en" lang="en">English</option><option value="ar" lang="ar">العربية</option></select></div></div>
+  </header>
+  <main id="main">
+    <section class="intro" aria-labelledby="page-title">
+      <p class="eyebrow" data-i18n="eyebrow">Storage size calculator</p>
+      <h1 id="page-title" data-i18n="heading">What size storage unit do you need?</h1>
+      <p data-i18n="intro">Enter the measurements of your boxes and furniture to add up their volume. Use the total to help compare storage units, allowing for stacking, furniture layout and space to reach your things.</p>
+      <p class="privacy-note" data-i18n="privacy">Your inventory stays in this tab. No accounts, tracking or inventory uploads. Download a CSV before closing the page.</p>
+    </section>
+
+    <div class="workspace">
+      <section class="entry-panel" aria-labelledby="entry-title">
+        <h2 id="entry-title" data-i18n="entryTitle">Add to your inventory</h2>
+        <p class="muted" data-i18n="entryHint">Use one row per labeled box. A quantity above one is an aggregate item group, not a box label.</p>
+        <form id="item-form">
+          <div class="field-row">
+            <div class="field"><label for="item-id" data-i18n="itemId">Item ID</label><input dir="ltr" id="item-id" name="item_id" value="B001" pattern="[A-Za-z0-9][A-Za-z0-9_-]{0,31}" required aria-describedby="id-hint"><small id="id-hint" data-i18n="idHint">Match this ID to your label.</small></div>
+            <div class="field"><label for="room" data-i18n="room">Room</label><input dir="auto" data-i18n-placeholder="roomPlaceholder" id="room" name="room" list="rooms" placeholder="Kitchen" required><datalist id="rooms"><option value="Kitchen"><option value="Bedroom"><option value="Living room"><option value="Office"></datalist></div>
+          </div>
+          <div class="field"><label for="description" data-i18n="itemName">Item name</label><input dir="auto" data-i18n-placeholder="itemPlaceholder" id="description" name="description" placeholder="Kitchen plates — box 1" required></div>
+          <fieldset>
+            <legend data-i18n="dimensions">Outer dimensions, in centimetres</legend>
+            <div class="dimensions">
+              <div class="field"><label for="length" data-i18n="length">Length (cm)</label><input dir="ltr" id="length" name="length_cm" type="number" min="0.001" step="any" value="60" required inputmode="decimal"></div>
+              <div class="field"><label for="width" data-i18n="width">Width (cm)</label><input dir="ltr" id="width" name="width_cm" type="number" min="0.001" step="any" value="40" required inputmode="decimal"></div>
+              <div class="field"><label for="height" data-i18n="height">Height (cm)</label><input dir="ltr" id="height" name="height_cm" type="number" min="0.001" step="any" value="40" required inputmode="decimal"></div>
+            </div>
+            <p class="hint" data-i18n="dimensionHint">The prefilled 60 × 40 × 40 cm box is an example. Measure yours.</p>
+          </fieldset>
+          <div class="field quantity-field"><label for="quantity" data-i18n="quantity">Quantity</label><input dir="ltr" id="quantity" name="quantity" type="number" min="1" step="1" value="1" required inputmode="numeric"></div>
+          <p id="form-error" class="error" role="alert" hidden></p>
+          <button type="submit" class="primary" data-i18n="add">Add item</button>
+        </form>
+        <div class="file-actions">
+          <button data-i18n="example" type="button" id="example-button" class="secondary">Try an example inventory</button>
+          <label for="csv-file" class="file-button"><span data-i18n="openCsv">Open CSV</span><input id="csv-file" type="file" accept=".csv,text/csv"></label>
+        </div>
+        <p class="hint" data-i18n="exampleHint">The example is fictional. Opening a CSV replaces the current list.</p>
+      </section>
+
+      <section class="result-panel" aria-labelledby="summary-title">
+        <div class="volume-panel">
+          <p class="eyebrow" data-i18n="estimate">Planning estimate</p>
+          <h2 id="summary-title" data-i18n="volumeTitle">Your packed volume</h2>
+          <p class="volume"><span dir="ltr" id="total-volume">0.000</span><span class="volume-unit" data-i18n="unit">m³</span></p>
+          <p id="item-count">0 items · 0 inventory rows</p>
+          <p class="calculation-note" data-i18n="calculationNote">This is the sum of each item’s outer cuboid volume. A storage space also needs room for stacking, access and gaps. This tool does not predict unit fit or rent.</p>
+        </div>
+        <div class="room-panel">
+          <h3 data-i18n="roomTitle">Volume by room</h3>
+          <ul id="room-totals"><li class="muted">Add your first item to see room totals.</li></ul>
+        </div>
+      </section>
+    </div>
+
+    <section class="inventory-panel" aria-labelledby="inventory-title">
+      <div class="section-header">
+        <div><h2 id="inventory-title" data-i18n="inventoryTitle">Your inventory</h2><p class="muted" data-i18n="inventoryHint">Keep the same ID on the item, label and list.</p></div>
+        <div class="inventory-actions"><button data-i18n="download" type="button" id="export-button" class="primary" disabled>Download CSV</button><button data-i18n="clear" type="button" id="clear-button" class="secondary" disabled>Clear list</button></div>
+      </div>
+      <p id="status" class="status" role="status" aria-live="polite"></p>
+      <div id="empty-state" class="empty-state"><p data-i18n="empty">Your list is empty.</p><p class="muted" data-i18n="emptyHint">Start with one measured item, or try the fictional example.</p></div>
+      <div id="table-container" role="region" data-i18n-aria-label="tableLabel" class="table-scroll" hidden tabindex="0" aria-label="Inventory table; scroll horizontally for all columns">
+        <table><caption data-i18n="caption" class="sr-only">Measured inventory and packed volume</caption><thead><tr><th data-i18n="idColumn" scope="col">ID</th><th data-i18n="itemColumn" scope="col">Room / item</th><th data-i18n="dimensionsColumn" scope="col">L × W × H (cm)</th><th data-i18n="quantityColumn" scope="col" class="numeric">Qty</th><th data-i18n="unit" scope="col" class="numeric">m³</th><th scope="col"><span data-i18n="actions" class="sr-only">Actions</span></th></tr></thead><tbody id="inventory-body"></tbody></table>
+      </div>
+    </section>
+
+    <details class="method"><summary data-i18n="method">How the calculation works</summary><p data-i18n="methodFormula">Length × width × height × quantity ÷ 1,000,000 gives cubic metres when dimensions are in centimetres. One 60 × 40 × 40 cm box is 0.096 m³. Four are 0.384 m³.</p><p data-i18n="methodMeasurement">Measure outer dimensions after packing. Irregular objects use the smallest rectangular envelope you can measure. Ask your mover or storage provider about doorways, stacking, access and handling requirements.</p><p data-i18n="methodCsv">Open a Moving Kit CSV or the Wadaya planner’s box-inventory CSV. Each planner row is one box; fill in its dimensions first. Planner notes and decisions remain in your original file, and the calculator counts every imported row. Imported totals are recalculated.</p><p data-i18n="methodExport">CSV exports use the same schema as the Python library. Text beginning with a spreadsheet formula marker receives an apostrophe.</p></details>
+    <noscript><p class="error">Enable JavaScript to use the calculator. The calculation method above remains available.</p></noscript>
+  </main>
+  <footer><p><span data-i18n="madeBy">Made by</span> <a class="provider-link" data-i18n="providerName" href="https://www.wadayaselfstorage.com/" target="_blank" rel="noopener">Wadaya Self Storage</a></p><a href="mailto:hello@wadayaselfstorage.com" dir="ltr">hello@wadayaselfstorage.com</a></footer>
+</body>
+</html>

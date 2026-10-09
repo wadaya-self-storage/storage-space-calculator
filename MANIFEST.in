@@ -1,0 +1,9 @@
+include README.md README.ar.md LICENSE
+recursive-include examples *.csv
+recursive-include tests *.py *.cjs
+recursive-include web *.html *.css *.js
+recursive-include claude-plugin *.json *.md *.py LICENSE
+recursive-include publishing *.md
+recursive-include tools *.py
+global-exclude *.pyc .DS_Store
+prune **/__pycache__

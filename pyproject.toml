@@ -1,0 +1,30 @@
+[build-system]
+requires = ["setuptools>=77.0.3"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "wadaya-moving-kit"
+version = "0.1.0"
+description = "Volumes and CSV inventories for the contents of a storage unit, by Wadaya Self Storage in Bahrain"
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{name = "Wadaya Self Storage", email = "hello@wadayaselfstorage.com"}]
+keywords = ["self storage", "storage units", "inventory", "volume calculator", "cubic metres", "csv", "bahrain"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Programming Language :: Python :: 3",
+  "Operating System :: OS Independent",
+  "Topic :: Utilities",
+]
+dependencies = []
+
+[project.urls]
+Homepage = "https://www.wadayaselfstorage.com/"
+
+[project.scripts]
+wadaya-moving-kit = "wadaya_moving_kit.cli:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
